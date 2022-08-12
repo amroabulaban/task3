@@ -1,12 +1,26 @@
-
+import React from "react";
+import {Routes, Route,Router} from "react-router-dom"
 import './App.css';
+
+import AllPosts from "./components/AllPosts";
+import OnePost from "./components/OnePost";
+
 
 function App() {
   return (
-    <div className="App">
-    <header class="page-header">
-			<h1 class="entry-title">التصنيف: <span>Arabic Blog</span></h1>		</header>
-    </div>
+<>
+<Router>
+    <Routes>
+       <div>
+        <h2>hello world</h2>
+         <Route exact path="/" component={<AllPosts/>} /> 
+         <Route path="/onepost" component={<OnePost/>}  /> 
+      </div>
+    </Routes>
+  </Router>
+</>
+
+    
   );
 }
 
