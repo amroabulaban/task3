@@ -29,7 +29,7 @@ export default function AllPosts(){
             <div>
                 {allPostsData &&
                  allPostsData.map((post, index) => (
-                    <Link to = {'/' + post.slug.current} key= {post.slug.current}>
+                    <Link to = {'/onepost/' + post.slug.current} key= {post.slug.current}>
                         <span key = {index}>
                             <img src = {post.mainImage.asset.url} alt = " " />
                                 <span>

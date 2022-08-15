@@ -13,7 +13,7 @@ const builder = imageUrlBuilder(sanityClient);
 export default function OnePost(){
     const [postData, setPostData]= useState(null);
     const { slug } = useParams();
-    
+    console.log(slug);
     useEffect(() => {
         sanityClient
           .fetch(
@@ -27,8 +27,7 @@ export default function OnePost(){
                     }
                 },
                 body,
-                "name": author->name,
-                "authorImage": author->image
+                
             }`,
             {slug}
         )
@@ -41,13 +40,6 @@ export default function OnePost(){
         <div>
             <div>
             <h2>{postData.title}</h2>
-            <div>
-                <img 
-                src={urlFor(postData.authorImage).width(100).url()}
-                alt= "author is amro"
-                />
-                <h4>{postData.name}</h4>
-            </div>
             </div>
             <img 
             src={urlFor(postData.mainImage).width(100).url()} 
@@ -56,8 +48,8 @@ export default function OnePost(){
             <div>
                 <BlockContent
                   blocks = {postData.body}
-                  projectId={sanityClient.client.Config().projectId}
-                  dataset = {sanityClient.client.Config().projectId}
+                  //projectId={sanityClient.client.Config().projectId}
+                  //dataset = {sanityClient.client.Config().projectId}
                 />
 
             </div>
