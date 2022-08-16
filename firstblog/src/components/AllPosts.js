@@ -2,6 +2,7 @@ import React, {useEffect,useState} from "react";
 import sanityClient from "../client.js";
 import {Link} from "react-router-dom";
 
+
 export default function AllPosts(){
     const [allPostsData, setAllPosts] = useState(null);
 
@@ -16,7 +17,8 @@ export default function AllPosts(){
                         _id,
                         url
                     }
-                }
+                },
+               
             }`
         )
         .then((data) => setAllPosts(data))
@@ -24,21 +26,25 @@ export default function AllPosts(){
     }, []);
 
     return(
+        <div >
         <div>
             <h2> English Blog</h2>
             <div>
                 {allPostsData &&
                  allPostsData.map((post, index) => (
-                    <Link to = {'/onepost/' + post.slug.current} key= {post.slug.current}>
-                        <span key = {index}>
-                            <img src = {post.mainImage.asset.url} alt = " " />
-                                <span>
+                    <Link to = {"/onepost/" + post.slug.current} key= {post.slug.current}> 
+                       <span key = {index}>
+                            <span>
                                     <h2>{post.title}</h2>
                                 </span>
+                            <img src = {post.mainImage.asset.url} alt = " " width="800" 
+                               height="500" />  
                         </span>
-                    </Link>
+                        </Link> 
+                       
                  ))}
             </div>
         </div>
+    </div>
     )
 };

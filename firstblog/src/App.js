@@ -11,9 +11,11 @@ function App() {
 
 <BrowserRouter>
        <div>
+        
          <Route component={AllPosts}  exact path="/" /> 
-         <Route component={OnePost} path="/OnePost/:slug" /> 
+         <Route component={OnePost} path="/onepost/:slug" /> 
       </div>
+
   </BrowserRouter>
 
     
