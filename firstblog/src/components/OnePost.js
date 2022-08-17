@@ -1,19 +1,19 @@
 import React, {useEffect, useState} from "react";
 import sanityClient from "../client.js";
 import {useParams} from "react-router-dom";
-import imageUrlBuilder from "@sanity/image-url";
+//import imageUrlBuilder from "@sanity/image-url";
 import BlockContent from "@sanity/block-content-to-react";
 
-const builder = imageUrlBuilder(sanityClient);
+/*const builder = imageUrlBuilder(sanityClient);
  function urlFor(source){
     return builder.image(source); 
- }
+ }*/
 
 
 export default function OnePost(){
     const [postData, setPostData]= useState(null);
     const { slug } = useParams();
-    console.log(slug);
+    
     useEffect(() => {
         sanityClient
           .fetch(
@@ -39,13 +39,17 @@ export default function OnePost(){
     return(
         <div>
             <div>
-            <h2>{postData.title}</h2>
+            <h2 style={{
+          marginLeft: '4rem',
+          fontSize: '30px',
+          padding: '20px',
+          color: 'navy'}}>{postData.title}</h2>
             </div>
-            <img 
-            src={urlFor(postData.mainImage).width(100).url()} 
-            alt=" " 
-            />
-            <div>
+            <div style={{
+          marginLeft: '4rem',
+          fontSize: '20px',
+          padding: '20px',
+          color: 'navy'}}>
                 <BlockContent
                   blocks = {postData.body}
                   projectId={sanityClient.projectId}
