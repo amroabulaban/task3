@@ -14,6 +14,7 @@ export default function AllPosts(){
             `*[_type == "post"]{
                 title,
                 slug,
+                body,
                 mainImage{
                     asset->{
                         _id,
@@ -36,28 +37,27 @@ export default function AllPosts(){
         <div style={styles} >
         <div >
             <h2   style={{
-          fontSize: '40px',
-          color: 'navy'}}> English Blog</h2>
+                
+                fontSize: '40px',
+                color: 'navy'}}> English Blog</h2>
             <div >
                 {allPostsData &&
                  allPostsData.map((post, index) => (
-                    <Link to = {"/onepost/" + post.slug.current} key= {post.slug.current}> 
-                    <div >
-                       <span key = {index}>
-                            <span>
-                                    <h2 style={{
-          fontSize: '40px',
-          color: 'navy'}}>{post.title}</h2>
-                                     </span>
-                            
-                            <img src = {post.mainImage.asset.url} alt = " " width="800" 
-                               height="400" />  
-                               
-                               
-                        </span>
+                    <div>
+                    <Link to = {"/onepost/" + post.slug.current} key= {post.slug.current}>
+                    <div style={styles}>
+                    <span key = {index}>
+                    <span>
+                    <h2 style={{fontSize: '40px', color: 'navy'}}>{post.title}</h2>
+                    </span>
+                    <img src = {post.mainImage.asset.url} alt = " " width="500" height="400" /> 
+                    </span>
                         </div>
-                        </Link> 
-                       
+                        </Link>
+                        <div style={{color: 'navy'}} 
+                        dangerouslySetInnerHTML={{ __html: post.body[0].children[0].text.substring(0,500) +"[..]" }} />
+                        </div>
+                        
                  ))}
             </div>
         </div>

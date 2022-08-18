@@ -52,8 +52,9 @@ export default function OnePost(){
           color: 'navy'}}>
                 <BlockContent
                   blocks = {postData.body}
-                  projectId={sanityClient.projectId}
-                  dataset = {sanityClient.dataset}
+                  
+                  projectId="jyfjw9h1"
+                  dataset = "production"
                 />
 
             </div>
