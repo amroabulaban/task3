@@ -19,6 +19,7 @@ function App() {
          <Route component={OnePost} path="/onepost/:slug" /> 
          </Switch>
          <Footer/>
+    
       </div>
       
 
